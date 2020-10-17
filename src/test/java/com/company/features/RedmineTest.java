@@ -114,7 +114,4 @@ public class RedmineTest extends RedmineConfig {
         then()
                 .statusCode(201);
     }
-
-
-
 }
