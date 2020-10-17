@@ -83,6 +83,38 @@ public class RedmineTest extends RedmineConfig {
 
     }
 
+    @Test
+    public void getALLIssuesXML(){
+
+        given().
+                contentType("application/xml").
+        when()
+                .get(RedmineEndpoints.REDMINE_ISSUES_XML).
+        then()
+                .statusCode(200);
+    }
+
+    @Test
+    public void createNewIssueXML(){
+
+        String issueBodyXml = "<issue>\n" +
+                "    <subject>I cannot create a user.</subject>\n" +
+                "    <description>As an admin user, I cannot create an user when xml...</description>\n" +
+                "    <project_id>1</project_id>\n" +
+                "    <tracker_id>1</tracker_id>\n" +
+                "    <status_id>1</status_id>\n" +
+                "    <priority_id>1</priority_id>\n" +
+                "</issue>";
+
+        given()
+                .body(issueBodyXml)
+                .contentType("application/xml").
+        when()
+                .post(RedmineEndpoints.REDMINE_ISSUES_XML).
+        then()
+                .statusCode(201);
+    }
+
 
 
 }
