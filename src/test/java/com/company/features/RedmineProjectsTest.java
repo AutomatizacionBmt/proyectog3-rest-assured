@@ -14,33 +14,26 @@ public class RedmineProjectsTest extends RedmineConfig {
 
     @Test
     public void testProjectSerialization() {
-
+        //Serialización
         //Cuando un Objeto JAVA ===> Objecto JSON
-
-        /*Project project = new Project();
-        project.setName("RedmineProject");
-        project.setIdentifier("redminepuwafgo8");
-        project.setDescription("Esta es una descripción");
-        project.setInherit_members(false);
-        project.setIs_public(true);*/
 
         Integer randomNumber = (new Random()).nextInt(900000) + 100000;
 
-        Project project = new Project("RedmineProject" + randomNumber, "redmineproject" + randomNumber, "Este es un projecto de redmine creado desde rest assured", true);
+        Project project = new Project();
+        project.setName("RedmineProject" + randomNumber);
+        project.setIdentifier("redminepuwafgo9" + randomNumber);
+        project.setDescription("Esta es una descripción" +randomNumber);
+        project.setInherit_members(false);
+        project.setIs_public(true);
+
 
         Entity entity = new Entity(project);
 
-        //Entity entity = new Entity(project);
-
         given()
                 .body(entity).
-                when()
+        when()
                 .post(RedmineEndpoints.REDMINE_PROJECTS_JSON).
-                then()
+        then()
                 .statusCode(201);
     }
-
-
-
-
 }
