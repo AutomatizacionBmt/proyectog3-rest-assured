@@ -4,6 +4,7 @@ import com.company.config.RedmineConfig;
 import com.company.config.RedmineEndpoints;
 import com.company.entities.Entity;
 import com.company.entities.Project;
+import io.restassured.response.Response;
 import org.junit.Test;
 
 import java.util.Random;
@@ -35,5 +36,25 @@ public class RedmineProjectsTest extends RedmineConfig {
                 .post(RedmineEndpoints.REDMINE_PROJECTS_JSON).
         then()
                 .statusCode(201);
+    }
+
+    @Test
+    public void testProjectDeserialization(){
+
+        //Deserialización
+        //Cuando un Objeto JSON ===> Objecto Java
+
+        Response response =
+                            given()
+                                    .pathParam("idProject", 285).
+                            when()
+                                    .get(RedmineEndpoints.SINGLE_REDMINE_PROJECT_JSON);
+
+        response.then().statusCode(200);
+
+        Entity entity = response.getBody().as(Entity.class);
+        Project project = entity.getProject();
+
+        System.out.println(project.toString());
     }
 }
