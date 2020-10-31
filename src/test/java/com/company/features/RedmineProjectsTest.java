@@ -10,6 +10,7 @@ import org.junit.Test;
 import java.util.Random;
 
 import static io.restassured.RestAssured.given;
+import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInClasspath;
 
 public class RedmineProjectsTest extends RedmineConfig {
 
@@ -56,5 +57,17 @@ public class RedmineProjectsTest extends RedmineConfig {
         Project project = entity.getProject();
 
         System.out.println(project.toString());
+    }
+
+    @Test
+    public void testProjectValidateSchemaJSON(){
+
+        given()
+                .pathParam("idProject", 285).
+        when()
+                .get(RedmineEndpoints.SINGLE_REDMINE_PROJECT_JSON).
+        then()
+                .statusCode(200)
+                .body(matchesJsonSchemaInClasspath("project_schema.json"));
     }
 }
