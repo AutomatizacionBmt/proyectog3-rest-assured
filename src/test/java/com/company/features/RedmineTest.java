@@ -32,7 +32,7 @@ public class RedmineTest extends RedmineConfig {
     public void getSingleIssueJSON(){
 
         given()
-                .pathParam("idIssue",1020).
+                .pathParam("idIssue",2273).
         when()
                 .get(RedmineEndpoints.SINGLE_REDMINE_ISSUE_JSON).
         then()
@@ -52,7 +52,7 @@ public class RedmineTest extends RedmineConfig {
 
         given()
                 .body(issueBody)
-                .pathParam("idIssue", 1020).
+                .pathParam("idIssue", 2273).
         when().
                 put(RedmineEndpoints.SINGLE_REDMINE_ISSUE_JSON).
         then()
@@ -75,7 +75,7 @@ public class RedmineTest extends RedmineConfig {
 
         given()
                 .contentType("application/xml")
-                .pathParam("idIssue", 1019).
+                .pathParam("idIssue", 2273).
         when()
                 .get(RedmineEndpoints.SINGLE_REDMINE_ISSUE_XML).
         then()
