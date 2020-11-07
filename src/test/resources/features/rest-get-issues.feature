@@ -22,6 +22,6 @@ Feature: REST - Redmine Rest Testing  - Get Issues
       | start_date  | 2020-08-15                                            |
 
 
-  @UITest
-  Scenario: Get issues by list - JSON
-    Given Este es un step de prueba
+  #@UITest
+  #Scenario: Get issues by list - JSON
+   # Given Este es un step de prueba
