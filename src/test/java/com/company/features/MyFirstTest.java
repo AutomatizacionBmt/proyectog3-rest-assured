@@ -12,7 +12,7 @@ public class MyFirstTest {
         given().
                 contentType("application/json").
         when().
-                get("http://d5411673de39.ngrok.io/issues.json").
+                get("http://localhost:8081/issues.json").
 
         then().
                 statusCode(200).log().all();

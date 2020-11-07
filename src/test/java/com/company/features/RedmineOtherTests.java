@@ -18,12 +18,12 @@ public class RedmineOtherTests extends RedmineConfig {
     //"start_date": "2020-10-17",
 
         given().
-                pathParam("idIssue", 992).
+                pathParam("idIssue", 2273).
         when()
                 .get(RedmineEndpoints.SINGLE_REDMINE_ISSUE_JSON).
         then()
                 .statusCode(200)
-                .body("issue.start_date",equalTo("2020-10-17"))
+                .body("issue.start_date",equalTo("2020-11-07"))
                 .body("issue.subject", equalTo("Issue Modificado por José Humberto"));
     }
 
@@ -37,7 +37,7 @@ public class RedmineOtherTests extends RedmineConfig {
                         .get(RedmineEndpoints.REDMINE_ISSUES_JSON).
                 then()
                         .statusCode(200)
-                        .body("issues[0].subject",equalTo("Issue creado por JH desde Postman"));
+                        .body("issues[0].subject",equalTo("Issue JH2 creado desde RestAssured G3"));
 
 
     }
@@ -48,7 +48,7 @@ public class RedmineOtherTests extends RedmineConfig {
         Response response =
                             given().
                             when()
-                                    .get("issues/2233.json").
+                                    .get("issues/2273.json").
                             then()
                                     .statusCode(200)
                                     .extract().response();
@@ -65,7 +65,7 @@ public class RedmineOtherTests extends RedmineConfig {
         Response response =
                             given().
                             when()
-                                    .get("issues/2233.json").
+                                    .get("issues/2273.json").
                             then()
                                     .statusCode(200)
                                     .extract().response();
